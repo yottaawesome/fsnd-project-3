@@ -25,6 +25,7 @@ The final project for Udacity's Full Stack Developer Nanodegree.
   * Disabled incoming traffic by default: `sudo ufw default deny incoming`.
   * Enabled outgoing traffic by default: `sudo ufw default allow outgoing`.
   * Enable UFW: `sudo ufw enable`
+ * Installed Apache2: `sudo apt install apache2`.
   
 ## Resources used
 
