@@ -30,6 +30,13 @@ The final project for Udacity's Full Stack Developer Nanodegree.
   * Enabled outgoing traffic by default: `sudo ufw default allow outgoing`.
   * Enable UFW: `sudo ufw enable`
  * Installed Apache2: `sudo apt install apache2`.
+ * Installed PostgreSQL:
+  * `sudo apt-get install curl ca-certificates`
+  * `curl https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -`
+  * `sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'`
+  * `sudo apt-get update`
+  * `sudo apt-get install postgresql-11`
+  * Verify with `sudo -u postgres psql`
   
 ## Resources used
 
