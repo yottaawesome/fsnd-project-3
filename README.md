@@ -7,6 +7,7 @@ The final project for Udacity's Full Stack Developer Nanodegree.
 * Disabled SSH root login.
   * Edit global SSHD config file: `sudo vim /etc/ssh/sshd_config`
   * Edit `PermitRootLogin` setting to be `PermitRootLogin no`
+* Installed fail2ban: `sudo apt install fail2ban`.
 * Created user grader. 
   * Create user: `adduser grader`
   * Add grader to `sudo` group: `usermod -aG sudo grader`
