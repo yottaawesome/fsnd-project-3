@@ -9,7 +9,12 @@ The final project for Udacity's Full Stack Developer Nanodegree.
 * Created grader. 
   * `adduser grader`
   * `usermod -aG sudo grader`
+  * `su - grader`
   * Generated keypair for grader: `ssh-keygen -t rsa -b 4096 -C "grader@grader.com"`.
+  * Copy `id_rsa` locally and then `rm -rf ~/.ssh/id_rsa`
+  * `sudo mv ~/.ssh/id_rsa.pub ~/.ssh/authorized_keys`
+  * `sudo chmod 700 ~/.ssh`
+  * `sudo chmod 644 ~/.ssh/authorized_keys`
 * Enabled UFW:
   * Enabled SSH: `sudo ufw allow ssh`.
   * Enabled HTTP: `sudo ufw allow http`.
@@ -29,3 +34,4 @@ The final project for Udacity's Full Stack Developer Nanodegree.
 * https://linuxhint.com/ufw_list_rules/
 * https://www.cyberciti.biz/tips/setup-ssh-to-run-on-a-non-standard-port.html
 * https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-with-ufw-on-ubuntu-18-04
+* https://superuser.com/questions/215504/permissions-on-private-key-in-ssh-folder
