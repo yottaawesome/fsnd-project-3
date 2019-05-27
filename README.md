@@ -1,4 +1,5 @@
-# fsnd-project-3
+# FSND Project 3: Deploying to Linux
+
 The final project for Udacity's Full Stack Developer Nanodegree.
 
 ## Changes
