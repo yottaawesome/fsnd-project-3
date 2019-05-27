@@ -2,6 +2,10 @@
 
 The final project for Udacity's Full Stack Developer Nanodegree.
 
+## SSH
+
+`ssh grader@13.236.68.94`
+
 ## Changes
 
 * Disabled SSH root login.
