@@ -3,7 +3,7 @@ The final project for Udacity's Full Stack Developer Nanodegree.
 
 ## Changes
 
-* Disabled SSH root login (`/etc/ssh/sshd_config`->`PermitRootLogin no`).
+* Disabled SSH root login.
   * `sudo vim /etc/ssh/sshd_config`
   * Edit `PermitRootLogin no`
 * Created grader. 
@@ -15,6 +15,8 @@ The final project for Udacity's Full Stack Developer Nanodegree.
   * Enabled HTTP traffic `sudo ufw allow http`.
   * Enabled HTTPS traffic `sudo ufw allow https`.
   * Enabled NTP traffic `sudo ufw allow ntp`.
+  * Disabled incoming traffic by default: `sudo ufw default deny incoming`.
+  * Enabled outgoing traffic by default: `sudo ufw default allow outgoing`.
   
 ## Resources used
 
