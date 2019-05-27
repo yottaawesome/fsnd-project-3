@@ -37,6 +37,14 @@ The final project for Udacity's Full Stack Developer Nanodegree.
   * Update packages: `sudo apt-get update`.
   * Install PostgreSQL: `sudo apt-get install postgresql-11`.
   * Verify with `sudo -u postgres psql`.
+* Configured PostgreSQL user:
+  * Start PSQL: `sudo -u postgres psql`
+  * Create user: `create user bookshelfuser with encrypted password '<password>';`
+  * Connect to bookshelf DB: `\connect bookshelf`
+  * Add privileges:
+    * `grant all privileges on database bookshelf to bookshelfuser;`
+    * `grant all privileges on all tables in schema public to bookshelfuser;`
+    * `grant all privileges on all functions in schema public to bookshelfuser;`
 * Install `mod-wsgi` for Python 3: `sudo apt-get install libapache2-mod-wsgi-py3`.
 
 ## Resources used
