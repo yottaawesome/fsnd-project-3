@@ -1,0 +1,16 @@
+<html>
+    <head>
+        <title>Hello!</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+
+        <meta name="google-client-id" content="{{ google_client_id }}">
+        <meta name="github-client-id" content="{{ github_client_id }}">
+        <meta name="page-state" content="{{ page_state }}">
+    </head>
+    
+    <body>
+        <div id="app"></div>
+        <script type="text/javascript" src="{{ url_for('static', filename='main.js') }}"></script>
+    </body>
+</html>
