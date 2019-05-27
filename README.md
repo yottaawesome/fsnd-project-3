@@ -11,10 +11,10 @@ The final project for Udacity's Full Stack Developer Nanodegree.
   * `usermod -aG sudo grader`
   * Generated keypair for grader: `ssh-keygen -t rsa -b 4096 -C "grader@grader.com"`.
 * Enabled UFW:
-  * Enabled SSH (port 22) `traffic sudo ufw allow ssh`.
-  * Enabled HTTP traffic `sudo ufw allow http`.
-  * Enabled HTTPS traffic `sudo ufw allow https`.
-  * Enabled NTP traffic `sudo ufw allow ntp`.
+  * Enabled SSH: `sudo ufw allow ssh`.
+  * Enabled HTTP: `sudo ufw allow http`.
+  * Enabled HTTPS: `sudo ufw allow https`.
+  * Enabled NTP: `sudo ufw allow ntp`.
   * Disabled incoming traffic by default: `sudo ufw default deny incoming`.
   * Enabled outgoing traffic by default: `sudo ufw default allow outgoing`.
   
