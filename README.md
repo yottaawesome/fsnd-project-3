@@ -50,3 +50,4 @@ The final project for Udacity's Full Stack Developer Nanodegree.
 * https://www.cyberciti.biz/tips/setup-ssh-to-run-on-a-non-standard-port.html
 * https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-with-ufw-on-ubuntu-18-04
 * https://superuser.com/questions/215504/permissions-on-private-key-in-ssh-folder
+* https://wiki.postgresql.org/wiki/Apt
