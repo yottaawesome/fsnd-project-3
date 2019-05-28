@@ -47,11 +47,12 @@ The final project for Udacity's Full Stack Developer Nanodegree.
     * `grant all privileges on all functions in schema public to bookshelfuser;`
 * Install `mod-wsgi` for Python 3: `sudo apt-get install libapache2-mod-wsgi-py3`.
 * Prepare web application:
-  * Add `bookshelf.conf` to `/etc/apach2/sites-available`.
+  * Create web app directory: `var/www/bookshelf`.
+  * Add `bookshelf.conf` to `/etc/apache2/sites-available`.
   * Add `bookshelf.wsgi` to `/usr/local/www/wsgi-scripts`.
-  * Disable `default` site: `sudo a2dissite 000-default.conf`
-  * Enable `bookshelf` app: `sudo a2ensite bookshelf.conf`
-  * Restart Apache2: `sudo systemctl restart apache2`
+  * Disable `default` site: `sudo a2dissite 000-default.conf`.
+  * Enable `bookshelf` app: `sudo a2ensite bookshelf.conf`.
+  * Restart Apache2: `sudo systemctl restart apache2`.
 
 ## Resources used
 
