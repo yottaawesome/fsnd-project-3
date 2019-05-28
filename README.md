@@ -48,8 +48,8 @@ The final project for Udacity's Full Stack Developer Nanodegree.
 * Install `mod-wsgi` for Python 3: `sudo apt-get install libapache2-mod-wsgi-py3`.
 * Prepare web application:
   * Create web app directory: `var/www/bookshelf`.
-  * Add `bookshelf.conf` to `/etc/apache2/sites-available`.
-  * Add `bookshelf.wsgi` to `/usr/local/www/wsgi-scripts`.
+  * Add [`bookshelf.conf`](https://github.com/yottaawesome/fsnd-project-3/blob/master/src/apache-wsgi/bookshelf.conf) to `/etc/apache2/sites-available`.
+  * Add [`bookshelf.wsgi`](https://github.com/yottaawesome/fsnd-project-3/blob/master/src/apache-wsgi/bookshelf.wsgi) to `/usr/local/www/wsgi-scripts`.
   * Disable `default` site: `sudo a2dissite 000-default.conf`.
   * Enable `bookshelf` app: `sudo a2ensite bookshelf.conf`.
   * Restart Apache2: `sudo systemctl restart apache2`.
