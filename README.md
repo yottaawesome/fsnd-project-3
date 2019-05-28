@@ -29,6 +29,7 @@ The final project for Udacity's Full Stack Developer Nanodegree.
   * Disabled incoming traffic by default: `sudo ufw default deny incoming`.
   * Enabled outgoing traffic by default: `sudo ufw default allow outgoing`.
   * Enable UFW: `sudo ufw enable`.
+* Installed `virtualenv`: `sudo apt install virtualenv`.
 * Installed Apache2: `sudo apt install apache2`.
 * Installed PostgreSQL:
   * Install certificates: `sudo apt-get install curl ca-certificates`.
@@ -48,6 +49,7 @@ The final project for Udacity's Full Stack Developer Nanodegree.
 * Install `mod-wsgi` for Python 3: `sudo apt-get install libapache2-mod-wsgi-py3`.
 * Prepare web application:
   * Create web app directory: `var/www/bookshelf`.
+  * Create `virtualenv`: `virtualenv -p python3 env`.
   * Add [`bookshelf.conf`](https://github.com/yottaawesome/fsnd-project-3/blob/master/src/apache-wsgi/bookshelf.conf) to `/etc/apache2/sites-available`.
   * Add [`bookshelf.wsgi`](https://github.com/yottaawesome/fsnd-project-3/blob/master/src/apache-wsgi/bookshelf.wsgi) to `/usr/local/www/wsgi-scripts`.
   * Disable `default` site: `sudo a2dissite 000-default.conf`.
