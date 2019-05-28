@@ -7,4 +7,3 @@ with open(activate_this) as file_:
 
 from application import app as application
 
-ubuntu@ip-172-26-15-168:/usr/local/www/wsgi-scripts$
