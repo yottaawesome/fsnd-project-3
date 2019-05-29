@@ -55,6 +55,7 @@ The final project for Udacity's Full Stack Developer Nanodegree.
   * Disable `default` site: `sudo a2dissite 000-default.conf`.
   * Enable `bookshelf` app: `sudo a2ensite bookshelf.conf`.
   * Restart Apache2: `sudo systemctl restart apache2`.
+* Installed `certbot` and auto-generated SSL certificates and enabled URL rewrite to SSL.
   
 ## Potential improvements
 
