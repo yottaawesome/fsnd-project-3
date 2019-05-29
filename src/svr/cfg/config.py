@@ -11,3 +11,4 @@ with open(cfg_file_path) as cfg_file:
 SECRET_KEY = CFG['secret_key']
 GOOGLE_SECRETS_FILE = CFG['google_secrets_file']
 GITHUB_SECRETS_FILE = CFG['github_secrets_file']
+CONNECTION_STRING = CFG['conn_string']
