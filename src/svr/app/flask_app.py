@@ -1,22 +1,32 @@
 from flask import Flask
 import json
+import os
 from pathlib import Path
 
-with open('secret.google_client_secrets.json') as f:
-    json_secrets = json.load(f)
-    GOOGLE_CLIENT_ID = json_secrets['web']['client_id']
-    GOOGLE_CLIENT_SECRET = json_secrets['web']['client_secret']
+current_file_path = __file__
+current_file_dir = os.path.dirname(__file__)
+cfg_file_path = os.path.join(current_file_dir, 'secret.cfg.json')
 
-GITHUB_CLIENT_ID = None
-GITHUB_CLIENT_SECRET = None
-github_file = Path('secret.github_client_secrets.json')
-if github_file.is_file():
-    with github_file.open() as f:
+with open(cfg_file_path) as cfg_file:
+    cfg = json.load(cfg_file)
+    SECRET_KEY = cfg['secret_key']
+
+    with open(cfg['google_secrets_file']) as f:
         json_secrets = json.load(f)
-        GITHUB_CLIENT_ID = json_secrets['client_id']
-        GITHUB_CLIENT_SECRET = json_secrets['client_secret']
+        GOOGLE_CLIENT_ID = json_secrets['web']['client_id']
+        GOOGLE_CLIENT_SECRET = json_secrets['web']['client_secret']
+
+    GITHUB_CLIENT_ID = None
+    GITHUB_CLIENT_SECRET = None
+    github_file = Path(cfg['github_secrets_file'])
+    if github_file.is_file():
+        with github_file.open() as f:
+            json_secrets = json.load(f)
+            GITHUB_CLIENT_ID = json_secrets['client_id']
+            GITHUB_CLIENT_SECRET = json_secrets['client_secret']
 
 main_app = Flask(__name__)
+main_app.secret_key = SECRET_KEY
 
 API_DOC = []
 
