@@ -1,6 +1,6 @@
-# FSND Project 3: Deploying to Linux
+# FSND Project 3: Going live with Digital Bookshelf
 
-This is the final project for Udacity's Full Stack Developer Nanodegree. This project sees the deployment of [Project 2: Digital Bookshelf](https://github.com/yottaawesome/fsnd-project-2) to a live, configured, and secured server.
+This is the final project for Udacity's Full Stack Developer Nanodegree. This project sees the deployment of [Project 2: Digital Bookshelf](https://github.com/yottaawesome/fsnd-project-2) to a live, configured, and secured Ubuntu server hosted via Amazon Lighsail.
 
 ## Application URL
 
