@@ -12,6 +12,8 @@ I chose to change the default SSH port to 1012. This is a well-known port that r
 
 The private key for user grader is surrendered as part of the submission process and is not present in this repository. I have also altered the server to allow grader to run `sudo` without having to enter their password. This is purely out of convenience and I would not normally recommend this for an online server.
 
+Using the submitted private key, follow the instructions below to SSH in.
+
 1. In your `~/.ssh` folder, run `sudo vim config`.
 2. Append the following lines, save your changes, and close the file:
 
