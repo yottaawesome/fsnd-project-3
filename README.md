@@ -8,7 +8,7 @@ _Complete. Successfully graded. Lightsail instance decommissioned._
 
 ## Application URL
 
-Digital Bookshelf was live and has now been taken down following successful grading. I used one of my parked domains in order to enable SSL as I was uncomfortable having information passed around in plaintext over the Web. Following grading, I revoked the SSL certificates, deleted the Lightsail instance, and parked my domain again. However, I plan on hosting Digital Bookshelf under subdomain on my personal Azure Ubuntu VM at a later time.
+Digital Bookshelf was live and has now been taken down following successful grading. I used one of my parked domains in order to enable SSL as I was uncomfortable having information passed around in plaintext over the Web. Following grading, I revoked the SSL certificates, deleted the Lightsail instance, and parked my domain again. However, I plan on hosting Digital Bookshelf under a subdomain on my personal Azure Ubuntu VM at a later time.
 
 ## How to SSH in as the grader user
 
