@@ -4,7 +4,7 @@ The final project for Udacity's Full Stack Developer Nanodegree.
 
 ## SSH
 
-`ssh grader@13.236.68.94`
+`ssh -p 1012 grader@13.236.68.94`
 
 ## URL
 
@@ -17,7 +17,7 @@ The final project for Udacity's Full Stack Developer Nanodegree.
   * Edit global SSHD config file: `sudo vim /etc/ssh/sshd_config`
   * Edit `PermitRootLogin` setting to be `PermitRootLogin no`
 * Installed fail2ban: `sudo apt install fail2ban`.
-* Created user grader. 
+* Created user grader.
   * Create user: `adduser grader`
   * Add grader to `sudo` group: `usermod -aG sudo grader`
   * Login as grader: `su - grader`
@@ -26,14 +26,26 @@ The final project for Udacity's Full Stack Developer Nanodegree.
   * Rename `id_rsa.pub` to `authorized_keys`: `sudo mv ~/.ssh/id_rsa.pub ~/.ssh/authorized_keys`
   * Confirm `.ssh` has right permissions: `sudo chmod 700 ~/.ssh`
   * Confirm `authorized_keys` has right permissions: `sudo chmod 644 ~/.ssh/authorized_keys`
+  * Remove need to enter password every time `sudo` is invoked:
+    * `sudo visudo`
+    * Append `grader ALL=(ALL) NOPASSWD:ALL` and save.
+    * Connect as grader and test.
 * Enabled UFW:
   * Enabled SSH: `sudo ufw allow ssh`.
   * Enabled HTTP: `sudo ufw allow http`.
   * Enabled HTTPS: `sudo ufw allow https`.
   * Enabled NTP: `sudo ufw allow ntp`.
+  * Enable alternate SSH port: `sudo ufw allow 1012`.
   * Disabled incoming traffic by default: `sudo ufw default deny incoming`.
   * Enabled outgoing traffic by default: `sudo ufw default allow outgoing`.
   * Enable UFW: `sudo ufw enable`.
+* Change default SSH port:
+  * Double-check port 1012 is enabled in UFW: `sudo ufw status`.
+  * Open port 1012 in Amazon networking tab.
+  * Open `sshd_config`: `sudo vim /etc/ssh/sshd_config`.
+  * Change `# Port 22` to `Port 1012`.
+  * Restart SSHD: `service sshd restart`.
+  * Connect as `ubuntu` to confirm change is nominal.
 * Installed `virtualenv`: `sudo apt install virtualenv`.
 * Installed Apache2: `sudo apt install apache2`.
 * Installed PostgreSQL:
@@ -83,14 +95,54 @@ The final project for Udacity's Full Stack Developer Nanodegree.
 
 ## Resources used
 
+A long list of resources that either directly assisted me or gave me ideas on improving the deployment process.
+
+### Users
+
 * https://linuxize.com/post/how-to-create-a-sudo-user-on-ubuntu/
 * https://linuxize.com/post/how-to-add-and-delete-users-on-ubuntu-18-04/
 * https://www.digitalocean.com/community/tutorials/how-to-create-a-sudo-user-on-ubuntu-quickstart
+* https://superuser.com/questions/77617/how-can-i-create-a-non-login-user
+* https://www.cyberciti.biz/faq/linux-unix-running-sudo-command-without-a-password/
+
+### SSH
+
 * https://linuxize.com/post/how-to-set-up-ssh-keys-on-ubuntu-1804/
 * https://mediatemple.net/community/products/dv/204643810/how-do-i-disable-ssh-login-for-the-root-user
 * https://askubuntu.com/questions/1962/how-can-multiple-private-keys-be-used-with-ssh
-* https://linuxhint.com/ufw_list_rules/
-* https://www.cyberciti.biz/tips/setup-ssh-to-run-on-a-non-standard-port.html
-* https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-with-ufw-on-ubuntu-18-04
 * https://superuser.com/questions/215504/permissions-on-private-key-in-ssh-folder
+* https://www.cyberciti.biz/tips/setup-ssh-to-run-on-a-non-standard-port.html
+* https://au.godaddy.com/help/changing-the-ssh-port-for-your-linux-server-7306
+
+### UFW
+
+* https://linuxhint.com/ufw_list_rules/
+* https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-with-ufw-on-ubuntu-18-04
+
+### Apache and WSGI
+
+* http://tangothu.github.io/blog/2016/08/16/python-How-To-Serve-Python-Flask-Application-Using-mod_wsgi-express/
+* https://modwsgi.readthedocs.io/en/develop/configuration-directives/WSGIDaemonProcess.html
+* https://serverfault.com/questions/294101/wsgidaemonprocess-specifying-a-user
+* https://stackoverflow.com/questions/22346618/mod-wsgi-user-option-in-wsgidaemonprocess-doesnt-work
+* https://www.shellhacks.com/modwsgi-hello-world-example/
+* https://modwsgi.readthedocs.io/en/develop/user-guides/quick-configuration-guide.html
+* https://unix.stackexchange.com/questions/38978/where-are-apache-file-access-logs-stored
+* https://stackoverflow.com/questions/42260451/proper-write-permissions-for-apache-user-with-sqlite
+
+### SSL
+
+* https://certbot.eff.org/lets-encrypt/ubuntubionic-apache.html
+* https://www.ssllabs.com/ssltest/analyze.html
+
+### Postgres, SQLite, and SQLAlchemy
+
 * https://wiki.postgresql.org/wiki/Apt
+* https://suhas.org/sqlalchemy-tutorial/
+* https://stackoverflow.com/questions/19260067/sqlalchemy-engine-absolute-path-url-in-windows
+* https://www.digitalocean.com/community/tutorials/how-to-secure-postgresql-on-an-ubuntu-vps
+
+### Miscellaneous
+
+* https://blender.stackexchange.com/questions/31964/problem-with-paths-in-my-script-relative-to-local-python-file
+* https://stackoverflow.com/questions/50335676/sudo-privileges-within-python-virtualenv
