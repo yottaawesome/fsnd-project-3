@@ -77,10 +77,9 @@ The final project for Udacity's Full Stack Developer Nanodegree.
   
 ## Potential improvements
 
-* Enable SSL, but this is best done with a domain name.
 * Use [`mod_wsgi-express`](https://pypi.org/project/mod_wsgi/) instead of having to configure `mod_wsgi` and Apache2 the traditional way.
 * Run `mod_wsgi` as a daemon using a different account, so that if that account gets mapped to a PostgreSQL user, that account can only read one database, which minimises damage if the process ever gets compromised.
-* Containerize the app with Docker, and use Apache2 or nginx on the server as a reverse proxy to the hosted container. I regard this to be the ideal setup.
+* Containerize the app with Docker, and use Apache2 or nginx on the server as a reverse proxy to the hosted container. This allows multiple container-hosted applications to run relatively isolated from each other. I regard this to be the ideal setup.
 
 ## Resources used
 
