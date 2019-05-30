@@ -6,8 +6,13 @@ The final project for Udacity's Full Stack Developer Nanodegree.
 
 `ssh grader@13.236.68.94`
 
+## URL
+
+[https://vasiliosmagriplis.com/#/](https://vasiliosmagriplis.com/#/)
+
 ## Changes
 
+* Enabled port 443 for SSL.
 * Disabled SSH root login.
   * Edit global SSHD config file: `sudo vim /etc/ssh/sshd_config`
   * Edit `PermitRootLogin` setting to be `PermitRootLogin no`
@@ -47,10 +52,22 @@ The final project for Udacity's Full Stack Developer Nanodegree.
     * `grant all privileges on all tables in schema public to bookshelfuser;`
     * `grant all privileges on all functions in schema public to bookshelfuser;`
 * Install `mod-wsgi` for Python 3: `sudo apt-get install libapache2-mod-wsgi-py3`.
-* Prepare web application:
+* Prepared web application:
+  * Clone this repo.
   * Create web app directory: `var/www/bookshelf`.
-  * Create `virtualenv`: `virtualenv -p python3 env`.
-  * Change owner to install dependencies: `chown -R ubuntu:ubuntu env`
+  * Copy `src/svr/*` to `var/www/bookshelf`.
+  * Create `virtualenv` in `var/www/bookshelf`: `sudo virtualenv -p python3 env`.
+  * Change owner to install dependencies: `chown -R ubuntu:ubuntu env`.
+  * Activate environment: `source env/bin/activate`.
+  * Install Python dependencies: `pip install -r requirements.txt`.
+  * Create database: `python create_db.py`.
+  * Configure `cfg/secret.cfg.json`.
+  * Remove unnecessary files:
+    * `create_db.py`
+    * `example.secret.github_client_secrets.py`
+    * `tests/`
+    * `requirements.txt`
+    * `cfg/example.secret.cfg.json`
   * Add [`bookshelf.conf`](https://github.com/yottaawesome/fsnd-project-3/blob/master/src/apache-wsgi/bookshelf.conf) to `/etc/apache2/sites-available`.
   * Add [`bookshelf.wsgi`](https://github.com/yottaawesome/fsnd-project-3/blob/master/src/apache-wsgi/bookshelf.wsgi) to `/usr/local/www/wsgi-scripts`.
   * Disable `default` site: `sudo a2dissite 000-default.conf`.
