@@ -64,15 +64,18 @@ The order this list is in is not the order I took these actions in due to the fa
 * Disabled SSH root login.
   * Edit global SSHD config file: `sudo vim /etc/ssh/sshd_config`.
   * Edit `PermitRootLogin` setting to be `PermitRootLogin no`.
-  * Change default SSH port to 1012:
+* Change default SSH port to 1012:
+  * Snapshot VM in case we lock ourselves out.
   * Double-check port 1012 is enabled in UFW: `sudo ufw status`.
   * Open port 1012 in Amazon networking tab.
   * Open `sshd_config`: `sudo vim /etc/ssh/sshd_config`.
   * Change `# Port 22` to `Port 1012`.
   * Restart SSHD: `service sshd restart`.
   * Connect as `ubuntu` to confirm change is nominal.
+  * Deny port 22: `sudo ufw deny ssh`.
+  * Remove SSH from allowed firewall ports in Lightsail.
 * Installed fail2ban: `sudo apt install fail2ban`.
-* Created user grader.
+* Created and configured user grader.
   * Create user: `adduser grader`.
   * Add grader to `sudo` group: `usermod -aG sudo grader`.
   * Login as grader: `su - grader`.
@@ -95,8 +98,9 @@ The order this list is in is not the order I took these actions in due to the fa
   * Update packages: `sudo apt-get update`.
   * Install PostgreSQL: `sudo apt-get install postgresql-11`.
   * Verify with `sudo -u postgres psql`.
-* Configured PostgreSQL user:
+* Created database and configured PostgreSQL user:
   * Start PSQL: `sudo -u postgres psql`.
+  * Create database: `create database bookshelf;`.
   * Create user: `create user bookshelfuser with encrypted password '<password>';`.
   * Connect to bookshelf DB: `\connect bookshelf`.
   * Grant privileges to user:
