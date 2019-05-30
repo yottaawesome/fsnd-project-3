@@ -2,6 +2,10 @@
 
 This is the final project for Udacity's Full Stack Developer Nanodegree. This project sees the deployment of [Project 2: Digital Bookshelf](https://github.com/yottaawesome/fsnd-project-2) to a live, configured, and secured Ubuntu server hosted via Amazon Lightsail.
 
+## Status
+
+_Complete. Successfully graded. Lightsail instance decommissioned._
+
 ## Application URL
 
 Digital Bookshelf was live and has now been taken down following successful grading. I used one of my parked domains in order to enable SSL as I was uncomfortable having information passed around in plaintext over the Web. Following grading, I revoked the SSL certificates, deleted the Lightsail instance, and parked my domain again. However, I plan on hosting Digital Bookshelf under subdomain on my personal Azure Ubuntu VM at a later time.
