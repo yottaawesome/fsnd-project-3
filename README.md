@@ -1,6 +1,6 @@
 # FSND Project 3: Going live with Digital Bookshelf
 
-This is the final project for Udacity's Full Stack Developer Nanodegree. This project sees the deployment of [Project 2: Digital Bookshelf](https://github.com/yottaawesome/fsnd-project-2) to a live, configured, and secured Ubuntu server hosted via Amazon Lighsail.
+This is the final project for Udacity's Full Stack Developer Nanodegree. This project sees the deployment of [Project 2: Digital Bookshelf](https://github.com/yottaawesome/fsnd-project-2) to a live, configured, and secured Ubuntu server hosted via Amazon Lightsail.
 
 ## Application URL
 
@@ -39,7 +39,7 @@ Using the submitted private key, follow the instructions below to SSH in.
 
 ## Summary of changes to Digital Bookshelf
 
-A number of changes to the Digital Bookshelf application were necessary to prepare it for deployment. All of these improvements have been been backported to the [Project 2 repository](https://github.com/yottaawesome/fsnd-project-2).
+A number of changes to the Digital Bookshelf application were necessary to prepare it for deployment. All of these improvements have been backported to the [Project 2 repository](https://github.com/yottaawesome/fsnd-project-2).
 
 * Added `psycopg2-binary` to `requirements.txt` to enable SQLAlchemy to use PostgreSQL.
 * Created a new module `cfg` to hold configuration information located in `secret.cfg.json`, such as absolute paths to `secret.*` files, the server session key, and the database connection string.
