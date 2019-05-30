@@ -50,6 +50,7 @@ The final project for Udacity's Full Stack Developer Nanodegree.
 * Prepare web application:
   * Create web app directory: `var/www/bookshelf`.
   * Create `virtualenv`: `virtualenv -p python3 env`.
+  * Change owner to install dependencies: `chown -R ubuntu:ubuntu env`
   * Add [`bookshelf.conf`](https://github.com/yottaawesome/fsnd-project-3/blob/master/src/apache-wsgi/bookshelf.conf) to `/etc/apache2/sites-available`.
   * Add [`bookshelf.wsgi`](https://github.com/yottaawesome/fsnd-project-3/blob/master/src/apache-wsgi/bookshelf.wsgi) to `/usr/local/www/wsgi-scripts`.
   * Disable `default` site: `sudo a2dissite 000-default.conf`.
