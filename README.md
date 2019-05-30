@@ -4,7 +4,7 @@ This is the final project for Udacity's Full Stack Developer Nanodegree. This pr
 
 ## Application URL
 
-Digital Bookshelf was live and has now been taken down following successful grading. I used one of my parked domains in order to enable SSL as I was uncomfortable having information passed around in plaintext over the Web. Following grading, I revoked the SSL certificates, deleted the Lightsail instance, and parked my domain again.
+Digital Bookshelf was live and has now been taken down following successful grading. I used one of my parked domains in order to enable SSL as I was uncomfortable having information passed around in plaintext over the Web. Following grading, I revoked the SSL certificates, deleted the Lightsail instance, and parked my domain again. However, I plan on hosting Digital Bookshelf under subdomain on my personal Azure Ubuntu VM at a later time.
 
 ## How to SSH in as the grader user
 
