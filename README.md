@@ -50,6 +50,8 @@ A number of changes to the Digital Bookshelf application were necessary to prepa
 
 The order this list is in is not the order I took these actions in due to the fact I often discovered issues after the logical sequence of steps were undertaken, and sometimes some experimentation was required. I've nonetheless ordered this list in a logical sequence for future reference.
 
+During development of this project, `sudo apt update` and `sudo apt upgrade` were regularly used to keep the software up-to-date.
+
 * Enabled port 443 in Amazon Networking tab for SSL.
 * Set the timezone to Australian Central Standard Time (ACST -- GMT+9:30): `sudo dpkg-reconfigure tzdata`.
 * Enabled UFW:
