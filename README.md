@@ -154,6 +154,7 @@ A long list of resources that either directly assisted me or gave me ideas on im
 * https://www.digitalocean.com/community/tutorials/how-to-create-a-sudo-user-on-ubuntu-quickstart
 * https://superuser.com/questions/77617/how-can-i-create-a-non-login-user
 * https://www.cyberciti.biz/faq/linux-unix-running-sudo-command-without-a-password/
+* https://superuser.com/questions/77617/how-can-i-create-a-non-login-user
 
 ### SSH
 
@@ -163,6 +164,9 @@ A long list of resources that either directly assisted me or gave me ideas on im
 * https://superuser.com/questions/215504/permissions-on-private-key-in-ssh-folder
 * https://www.cyberciti.biz/tips/setup-ssh-to-run-on-a-non-standard-port.html
 * https://au.godaddy.com/help/changing-the-ssh-port-for-your-linux-server-7306
+* https://www.cyberciti.biz/faq/create-ssh-config-file-on-linux-unix/
+* https://serverfault.com/questions/189282/why-change-default-ssh-port
+* https://unix.stackexchange.com/questions/2942/why-change-default-ssh-port
 
 ### UFW
 
@@ -179,11 +183,14 @@ A long list of resources that either directly assisted me or gave me ideas on im
 * https://modwsgi.readthedocs.io/en/develop/user-guides/quick-configuration-guide.html
 * https://unix.stackexchange.com/questions/38978/where-are-apache-file-access-logs-stored
 * https://stackoverflow.com/questions/42260451/proper-write-permissions-for-apache-user-with-sqlite
+* https://cloudkul.com/blog/apache-virtual-hosting-with-different-users/
 
 ### SSL
 
 * https://certbot.eff.org/lets-encrypt/ubuntubionic-apache.html
 * https://www.ssllabs.com/ssltest/analyze.html
+* https://security.stackexchange.com/questions/166684/should-i-revoke-no-longer-used-lets-encrypt-certificates-before-destroying-them
+* https://letsencrypt.org/docs/revoking/
 
 ### Postgres, SQLite, and SQLAlchemy
 
@@ -191,9 +198,12 @@ A long list of resources that either directly assisted me or gave me ideas on im
 * https://suhas.org/sqlalchemy-tutorial/
 * https://stackoverflow.com/questions/19260067/sqlalchemy-engine-absolute-path-url-in-windows
 * https://www.digitalocean.com/community/tutorials/how-to-secure-postgresql-on-an-ubuntu-vps
+* https://www.compose.com/articles/using-postgresql-through-sqlalchemy/
 
 ### Miscellaneous
 
 * https://blender.stackexchange.com/questions/31964/problem-with-paths-in-my-script-relative-to-local-python-file
 * https://stackoverflow.com/questions/50335676/sudo-privileges-within-python-virtualenv
 * https://askubuntu.com/questions/323131/setting-timezone-from-terminal
+* https://www.cyberciti.biz/faq/unix-linux-check-if-port-is-in-use-command/
+
