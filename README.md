@@ -43,7 +43,7 @@ Using the submitted private key, follow the instructions below to SSH in.
 
 ## Installing with scripts
 
-In the `src/scripts` directory are scripts for installing and uninstalling the application. It's strongly recommended you first set up your `secret.cfg.json`, `secret.github_client_secrets.json`, and `secret.google_client_secrets.json` files before running these scripts. This will allow the scripts to copy the required files and set up the database. In particular, remember to set up the connection string `conn_string` in `secret.cfg.json`. Below are some examples of connection string using Postgres and SQLite.
+In the `src/scripts` directory are scripts for installing and uninstalling the application. It's strongly recommended you first set up your `secret.cfg.json`, `secret.github_client_secrets.json`, and `secret.google_client_secrets.json` files before running these scripts. This will allow the scripts to copy the required files and set up the database. In particular, remember to set up the connection string `conn_string` in `secret.cfg.json`. Below are some examples of connection string usings Postgres and SQLite.
 
 * Example using Postgres: `postgres://bookshelfuser:<password>@localhost:5432/bookshelf`
 * Example using SQLite and relative path: `sqlite:///bookshelf.db`
@@ -57,7 +57,9 @@ Before you can run these scripts, you'll need to mark them as executable. Run th
 
 Modify `cfg.sh` with the appropriate variables for your setup, e.g. where you want your Apache Bookshelf directory to be, where your WSGI scripts should be, where your `virtualenv` is located, etc. `$installed_secrets_dir` should match where you `secret.*` client secrets files are in `secret.cfg.json`. You may also need to modify the `bookshelf.conf` file for directory permissions if you install in other places than what this repository assumes.
 
-If you're using Postgres, modify the install.sql file to have the password for your database user. The scripts themselves will autodetect whether you're using Postgres or not. If you're using SQLite, the Apache user will [need to own and have read-write permissions to the directory](https://stackoverflow.com/questions/42260451/proper-write-permissions-for-apache-user-with-sqlite) where the SQLite database is. This is _not_ accounted for by the scripts, so you will need to run the following (modify `<your_sqlite_dir>` and `www-data` as appropriate).
+If you're using Postgres, modify the install.sql file to have the password for your database user. The scripts themselves will autodetect whether you're using Postgres or not, but the database creation to Postgres will only occur if the connection string specifies localhost.
+
+If you're using SQLite, the Apache user will [need to own and have read-write permissions to the directory](https://stackoverflow.com/questions/42260451/proper-write-permissions-for-apache-user-with-sqlite) where the SQLite database is. This is _not_ accounted for by the scripts, so you will need to run the following (modify `<your_sqlite_dir>` and `www-data` as appropriate).
 
 ```Bash
 chown -R www-data:www-data <your_sqlite_dir>
@@ -208,6 +210,7 @@ A long list of resources that either directly assisted me or gave me ideas on im
 * https://unix.stackexchange.com/questions/38978/where-are-apache-file-access-logs-stored
 * https://stackoverflow.com/questions/42260451/proper-write-permissions-for-apache-user-with-sqlite
 * https://cloudkul.com/blog/apache-virtual-hosting-with-different-users/
+* https://hostadvice.com/how-to/how-to-enable-apache-mod_rewrite-on-an-ubuntu-18-04-vps-or-dedicated-server/
 
 ### SSL
 
@@ -224,10 +227,34 @@ A long list of resources that either directly assisted me or gave me ideas on im
 * https://www.digitalocean.com/community/tutorials/how-to-secure-postgresql-on-an-ubuntu-vps
 * https://www.compose.com/articles/using-postgresql-through-sqlalchemy/
 
+## Bash scripting
+
+* https://landoflinux.com/linux_bash_scripting_structure.html
+* https://stackoverflow.com/questions/19306771/get-current-users-username-in-bash
+* https://stackoverflow.com/questions/5228345/how-to-reference-a-file-for-variables-using-bash
+* https://unix.stackexchange.com/questions/42847/are-there-naming-conventions-for-variables-in-shell-scripts
+* https://stackoverflow.com/questions/9772036/pass-all-variables-from-one-shell-script-to-another
+* https://stackoverflow.com/questions/17622106/variable-interpolation-in-shell
+* https://stackoverflow.com/questions/20615217/bash-bad-substitution
+* https://stackoverflow.com/questions/3643848/copy-files-from-one-directory-into-an-existing-directory
+* http://linuxcommand.org/lc3_wss0120.php
+* https://stackoverflow.com/questions/20858381/what-does-bash-c-do
+* https://stackoverflow.com/questions/3924182/how-the-does-keyword-if-test-if-a-value-is-true-of-false
+* http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_07_02.html
+* https://stackoverflow.com/questions/10376206/what-is-the-preferred-bash-shebang/10383546#10383546
+* https://stackoverflow.com/questions/2237080/how-to-compare-strings-in-bash
+* https://stackoverflow.com/questions/4749330/how-to-test-if-string-exists-in-file-with-bash
+* https://stackabuse.com/substrings-in-bash/
+* http://www.robelle.com/smugbook/regexpr.html
+* https://stackoverflow.com/questions/369758/how-to-trim-whitespace-from-a-bash-variable
+* https://www.cyberciti.biz/faq/how-to-use-sed-to-find-and-replace-text-in-files-in-linux-unix-shell/
+* https://stackoverflow.com/questions/16153446/bash-last-index-of
+* https://stackoverflow.com/questions/5947742/how-to-change-the-output-color-of-echo-in-linux
+
 ### Miscellaneous
 
 * https://blender.stackexchange.com/questions/31964/problem-with-paths-in-my-script-relative-to-local-python-file
 * https://stackoverflow.com/questions/50335676/sudo-privileges-within-python-virtualenv
 * https://askubuntu.com/questions/323131/setting-timezone-from-terminal
 * https://www.cyberciti.biz/faq/unix-linux-check-if-port-is-in-use-command/
-
+* https://superuser.com/questions/260925/how-can-i-make-chown-work-recursively

@@ -12,9 +12,15 @@ source $cfg_file
 yellow='\033[1;33m'
 blue='\033[1;34m'
 nc='\033[0m'
+red='\033[1;31m' 
+
+if [ ! -f $cfg_json_file ]; then
+    echo -e "${red}No secret.cfg.json found. Aborting.${nc}"
+    exit 1
+fi
 
 # $? gives the return value of the last command
-if grep -Fq "postgres" $cfg_json_file; then
+if grep -q "^.*postgres://.*:.*@localhost:.*$" $cfg_json_file; then
     sudo -u postgres psql -f $sql_install_file
 elif grep -Fq "sqlite:////" $cfg_json_file; then
     echo -e "${blue}Don't forget to set permissions on your SQLite directory.${nc}"
