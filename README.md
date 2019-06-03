@@ -49,7 +49,7 @@ In the `src/scripts` directory are scripts for installing and uninstalling the a
 * Example using SQLite and relative path: `sqlite:///bookshelf.db`
 * Example using SQLite and absolute path: `sqlite:////usr/local/bookshelf/db/bookshelf.db`
 
-Before you can run these scripts, you need to mark them as executable. Run the following.
+Before you can run these scripts, you'll need to mark them as executable. Run the following.
 
 * `chmod +x cfg.sh`
 * `chmod +x install.sh`
