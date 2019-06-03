@@ -7,9 +7,9 @@ cfg_file=$dir"/cfg.sh"
 sql_uninstall_file=$dir"/uninstall.sql"
 source $cfg_file
 
-if [ "$database" = "postgres" ]; then
+if grep -Fq "postgres" $cfg_json_file; then
     sudo -u postgres psql -d bookshelf -f $sql_uninstall_file
-elif [ "$database" = "sqlite" ]; then
+else
     echo "No action for SQLite"
 fi
 

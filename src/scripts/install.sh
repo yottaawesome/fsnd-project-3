@@ -9,9 +9,10 @@ cfg_file=$dir"/cfg.sh"
 sql_install_file=$dir"/install.sql"
 source $cfg_file
 
-if [ "$database" = "postgres" ]; then
+# $? gives the return value of the last command
+if grep -Fq "postgres" $cfg_json_file; then
     sudo -u postgres psql -f $sql_install_file
-elif [ "$database" = "sqlite" ]; then
+else
     echo "No action for SQLite"
 fi
 

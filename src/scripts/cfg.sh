@@ -10,6 +10,7 @@ google_client_secrets_file="${svr_dir}/secret.google_client_secrets.json"
 github_client_secrets_file="${svr_dir}/secret.github_client_secrets.json"
 requirements_file="${svr_dir}/requirements.txt"
 create_db_file="${svr_dir}/create_db.py"
+cfg_json_file="${svr_dir}/cfg/secret.cfg.json"
 essential_files="${svr_dir}/cfg ${svr_dir}/app ${svr_dir}/db ${svr_dir}/__init__.py ${svr_dir}/main.py"
 
 # where the Bookshelf Apache dir lives
