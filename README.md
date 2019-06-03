@@ -43,15 +43,21 @@ Using the submitted private key, follow the instructions below to SSH in.
 
 ## Installing with scripts
 
-In the `src/scripts` directory are scripts for installing and uninstalling the application. It's recommended you first setup your `secret.cfg.json`, `secret.github_client_secrets.json`, and `secret.google_client_secrets.json` files before running these scripts.
+In the `src/scripts` directory are scripts for installing and uninstalling the application. It's strongly recommended you first set up your `secret.cfg.json`, `secret.github_client_secrets.json`, and `secret.google_client_secrets.json` files before running these scripts. This will allow the scripts to copy the required files and set up the database. In particular, remember to set up the connection string `conn_string` in `secret.cfg.json`. Below are some examples of connection string using Postgres and SQLite.
 
-To mark these scripts as executable, run the following.
+* Example using Postgres: `postgres://bookshelfuser:<password>@localhost:5432/bookshelf`
+* Example using SQLite and relative path: `sqlite:///bookshelf.db`
+* Example using SQLite and absolute path: `sqlite:////usr/local/bookshelf/db/bookshelf.db`
+
+Before you can run these scripts, you need to mark them as executable. Run the following.
 
 * `chmod +x cfg.sh`
 * `chmod +x install.sh`
 * `chmod +x uninstall.sh`
 
-Modify `cfg.sh` with the appropriate variables for your setup, e.g. where you want your Apache Bookshelf directory to be, where your WSGI scripts should be, where your `virtualenv` is located, etc. You may also need to modify the `bookshelf.conf` file for directory permissions if you install in other places than what this repository assumes. Note that if you use SQLite, the Apache user will [need to own and have read-write permissions to the directory](https://stackoverflow.com/questions/42260451/proper-write-permissions-for-apache-user-with-sqlite) where the SQLite database is. This is _not_ accounted for by the scripts, so you will need to run the following (modify `<your_sqlite_dir>` and `www-data` as appropriate).
+Modify `cfg.sh` with the appropriate variables for your setup, e.g. where you want your Apache Bookshelf directory to be, where your WSGI scripts should be, where your `virtualenv` is located, etc. `$installed_secrets_dir` should match where you `secret.*` client secrets files are in `secret.cfg.json`. You may also need to modify the `bookshelf.conf` file for directory permissions if you install in other places than what this repository assumes.
+
+If you're using Postgres, set the `$database` variable to "postgres" and modify the install.sql file to have the password for your database user. If you're using SQLite, the Apache user will [need to own and have read-write permissions to the directory](https://stackoverflow.com/questions/42260451/proper-write-permissions-for-apache-user-with-sqlite) where the SQLite database is. This is _not_ accounted for by the scripts, so you will need to run the following (modify `<your_sqlite_dir>` and `www-data` as appropriate).
 
 ```Bash
 chown -R www-data:www-data <your_sqlite_dir>

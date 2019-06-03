@@ -1,12 +1,19 @@
 #!/usr/bin/env bash
 
-USER=$1
+#https://stackoverflow.com/a/10383546
 
 # import config paths
 # https://stackoverflow.com/a/246128
 dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" > /dev/null && pwd )"
 cfg_file=$dir"/cfg.sh"
+sql_install_file=$dir"/install.sql"
 source $cfg_file
+
+if [ "$database" = "postgres" ]; then
+    sudo -u postgres psql -f $sql_install_file
+elif [ "$database" = "sqlite" ]; then
+    echo "No action for SQLite"
+fi
 
 # make directories
 mkdir -p $apache_bookshelf_dir
@@ -19,12 +26,12 @@ cp $wsgi_script $wsgi_scripts_dir
 cp $conf_file $apache_sites_available_dir
 
 # copy src/svr to Apache bookshelf folder
-cp -R "${svr_dir}/." $apache_bookshelf_dir
+cp -R ${essential_files} $apache_bookshelf_dir
 
-# remove any copies env dir
-rm -rf $virtualenv_dir
+# copy client secrets files
+cp $google_client_secrets_file $github_client_secrets_file $installed_secrets_dir 
 
-# create a virtual environment
+# create virtual environment
 $virtualenv -p python3 $virtualenv_dir
 
 # change the owner of the env folder to enable pip to install deps
@@ -34,14 +41,14 @@ chown -R $USER:$USER $virtualenv_dir
 source $virtualenv_activate
 
 # install deps
-pip install -r $copied_requirements_file
+pip install -r $requirements_file
+
+# install the DB
+python $create_db_file
 
 # deactivate and clean up unnecessary files
 deactivate
-rm -rf $copied_tests_dir
-rm -rf $copied_requirements_file
 rm -rf $copied_example_cfg_file
-rm -rf $copied_example_github_client_file
 
 # enable and reload Apache
 a2ensite bookshelf.conf
