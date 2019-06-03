@@ -43,13 +43,20 @@ Using the submitted private key, follow the instructions below to SSH in.
 
 ## Installing with scripts
 
-In the `src/scripts` directory are scripts for installing and installing the application. You'll first need to mark these scripts as executable.
+In the `src/scripts` directory are scripts for installing and uninstalling the application. It's recommended you first setup your `secret.cfg.json`, `secret.github_client_secrets.json`, and `secret.google_client_secrets.json` files before running these scripts.
+
+To mark these scripts as executable, run the following.
 
 * `chmod +x cfg.sh`
 * `chmod +x install.sh`
 * `chmod +x uninstall.sh`
 
-Modify `cfg.sh` with the appropriate variables for your setup, e.g. where you want your Apache Bookshelf directory to be, where your WSGI scripts should be, where your `virtualenv` is located, etc. You may also need to modify the `bookshelf.conf` file for directory permissions if you install in other places than what this repository assumes. Note that if you use, SQLite, the Apache user will need to have read-write permissions to the directory where the SQLite database is. 
+Modify `cfg.sh` with the appropriate variables for your setup, e.g. where you want your Apache Bookshelf directory to be, where your WSGI scripts should be, where your `virtualenv` is located, etc. You may also need to modify the `bookshelf.conf` file for directory permissions if you install in other places than what this repository assumes. Note that if you use SQLite, the Apache user will [need to own and have read-write permissions to the directory](https://stackoverflow.com/questions/42260451/proper-write-permissions-for-apache-user-with-sqlite) where the SQLite database is. This is _not_ accounted for by the scripts, so you will need to run the following (modify `<your_sqlite_dir>` and `www-data` as appropriate).
+
+```Bash
+chown -R www-data:www-data <your_sqlite_dir>
+chmod -R u+w <your_sqlite_dir>
+```
 
 ## Summary of changes to Digital Bookshelf
 
