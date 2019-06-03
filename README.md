@@ -41,6 +41,16 @@ Using the submitted private key, follow the instructions below to SSH in.
 * `libapache2-mod-wsgi-py3`: the Python 3 version of `mod_wsgi`; necessary for serving Python applications from Apache.
 * `python-certbot-apache`: automates server SSL certificate creation, Apache configuration, and redirection (very useful!).
 
+## Installing with scripts
+
+In the `src/scripts` directory are scripts for installing and installing the application. You'll first need to mark these scripts as executable.
+
+* `chmod +x cfg.sh`
+* `chmod +x install.sh`
+* `chmod +x uninstall.sh`
+
+Modify `cfg.sh` with the appropriate variables for your setup, e.g. where you want your Apache Bookshelf directory to be, where your WSGI scripts should be, where your `virtualenv` is located, etc. You may also need to modify the `bookshelf.conf` file for directory permissions if you install in other places than what this repository assumes. Note that if you use, SQLite, the Apache user will need to have read-write permissions to the directory where the SQLite database is. 
+
 ## Summary of changes to Digital Bookshelf
 
 A number of changes to the Digital Bookshelf application were necessary to prepare it for deployment. All of these improvements have been backported to the [Project 2 repository](https://github.com/yottaawesome/fsnd-project-2).
@@ -114,6 +124,7 @@ During development of this project, `sudo apt update` and `sudo apt upgrade` wer
     * `grant all privileges on all tables in schema public to bookshelfuser;`
     * `grant all privileges on all functions in schema public to bookshelfuser;`
 * Installed `mod-wsgi` for Python 3: `sudo apt-get install libapache2-mod-wsgi-py3`.
+* Enabled Apache URL Rewrite module: `sudo a2enmod rewrite`.
 * Prepared web application:
   * Clone this repo.
   * Create web app directory: `var/www/bookshelf`.
@@ -139,7 +150,6 @@ During development of this project, `sudo apt update` and `sudo apt upgrade` wer
   
 ## Potential improvements
 
-* Create a Bash script that does all the necessary install steps.
 * Use [`mod_wsgi-express`](https://pypi.org/project/mod_wsgi/) instead of having to configure `mod_wsgi` and Apache2 the traditional way.
 * Run `mod_wsgi` as a daemon using a different system account that only has permissions to the assigned Apache virtual directory. This means that if the process ever gets compromised, it would only be able to affect the Digital Bookshelf application and database.
 * Containerize the app with Docker, and use Apache2 or nginx on the server as a reverse proxy to the hosted container. This allows multiple container-hosted applications to run relatively isolated from each other. I regard this to be the ideal setup.
