@@ -139,6 +139,7 @@ During development of this project, `sudo apt update` and `sudo apt upgrade` wer
   
 ## Potential improvements
 
+* Create a Bash script that does all the necessary install steps.
 * Use [`mod_wsgi-express`](https://pypi.org/project/mod_wsgi/) instead of having to configure `mod_wsgi` and Apache2 the traditional way.
 * Run `mod_wsgi` as a daemon using a different system account that only has permissions to the assigned Apache virtual directory. This means that if the process ever gets compromised, it would only be able to affect the Digital Bookshelf application and database.
 * Containerize the app with Docker, and use Apache2 or nginx on the server as a reverse proxy to the hosted container. This allows multiple container-hosted applications to run relatively isolated from each other. I regard this to be the ideal setup.
