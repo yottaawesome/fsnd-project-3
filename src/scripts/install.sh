@@ -19,6 +19,9 @@ if grep -Fq "postgres" $cfg_json_file; then
 elif grep -Fq "sqlite:////" $cfg_json_file; then
     echo -e "${blue}Don't forget to set permissions on your SQLite directory.${nc}"
 elif grep -Fq "sqlite:///" $cfg_json_file; then
+    # https://stackoverflow.com/questions/16153446/bash-last-index-of
+    # a=`grep -F "sqlite:///" ../svr/cfg/secret.cfg.json | sed -e 's/^[[:space:]]*//' | sed -e 's/"//g' | sed -e 's/conn_string://g' | sed -e 's/^[[:space:]]*//' | cut -c11-`
+    # a=${a%/*}
     echo -e "${yellow}WARNING: Relative SQLite db path detected. This works for development but will likely cause problems in WSGI deployments. Consider an absolute path.${nc}"
 fi
 
