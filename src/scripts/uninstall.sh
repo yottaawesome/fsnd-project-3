@@ -9,8 +9,8 @@ source $cfg_file
 
 if grep -Fq "postgres" $cfg_json_file; then
     sudo -u postgres psql -d bookshelf -f $sql_uninstall_file
-else
-    echo "No action for SQLite"
+elif grep -Fq "sqlite:////" $cfg_json_file; then
+    rm -rf $sqlite_dir
 fi
 
 # disable site

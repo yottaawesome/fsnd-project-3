@@ -23,13 +23,16 @@ fi
 if grep -q "^.*postgres://.*:.*@localhost:.*$" $cfg_json_file; then
     sudo -u postgres psql -f $sql_install_file
 elif grep -Fq "sqlite:////" $cfg_json_file; then
-    echo -e "${blue}Don't forget to set permissions on your SQLite directory.${nc}"
-elif grep -Fq "sqlite:///" $cfg_json_file; then
     # https://stackoverflow.com/questions/16153446/bash-last-index-of
-    # a=`grep -F "sqlite:///" ../svr/cfg/secret.cfg.json | sed -e 's/^[[:space:]]*//' | sed -e 's/"//g' | sed -e 's/conn_string://g' | sed -e 's/^[[:space:]]*//' | cut -c11-`
-    # a=${a%/*}
+    mkdir -p $sqlite_dir
+    chown -R $apache_user:$apache_user_group $sqlite_dir
+    chmod -R u+w $sqlite_dir
+    echo -e "${blue}Successfully set permissions on your SQLite directory.${nc}"
+elif grep -Fq "sqlite:///" $cfg_json_file; then
     echo -e "${yellow}WARNING: Relative SQLite db path detected. This works for development but will likely cause problems in WSGI deployments. Consider an absolute path.${nc}"
 fi
+
+exit 1
 
 # make directories
 mkdir -p $apache_bookshelf_dir
