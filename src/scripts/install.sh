@@ -9,11 +9,17 @@ cfg_file=$dir"/cfg.sh"
 sql_install_file=$dir"/install.sql"
 source $cfg_file
 
+yellow='\033[1;33m'
+blue='\033[1;34m'
+nc='\033[0m'
+
 # $? gives the return value of the last command
 if grep -Fq "postgres" $cfg_json_file; then
     sudo -u postgres psql -f $sql_install_file
-else
-    echo "No action for SQLite"
+elif grep -Fq "sqlite:////" $cfg_json_file; then
+    echo -e "${blue}Don't forget to set permissions on your SQLite directory.${nc}"
+elif grep -Fq "sqlite:///" $cfg_json_file; then
+    echo -e "${yellow}WARNING: Relative SQLite db path detected. This works for development but will likely cause problems in WSGI deployments. Consider an absolute path.${nc}"
 fi
 
 # make directories
@@ -42,7 +48,7 @@ chown -R $USER:$USER $virtualenv_dir
 source $virtualenv_activate
 
 # install deps
-pip install -r $requirements_file
+pip install -q -r $requirements_file
 
 # install the DB
 python $create_db_file
