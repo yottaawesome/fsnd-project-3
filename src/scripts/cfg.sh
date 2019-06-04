@@ -71,6 +71,7 @@ installed_secrets_dir="${apache_bookshelf_dir}"
 
 # Apache's sites-available dir
 apache_sites_available_dir="/etc/apache2/sites-available"
+
 # Where the WSGi script should live
 wsgi_scripts_dir="/usr/local/www/bookshelf/wsgi"
 
@@ -78,13 +79,23 @@ wsgi_script_name="bookshelf.wsgi"
 
 conf_file_name="bookshelf.conf"
 
+# where the conf file will go
 installed_conf_file="${apache_sites_available_dir}/${conf_file_name}"
 
+# where virtualenv binary is
 virtualenv="${HOME}/.local/bin/virtualenv"
+
+# the directory to create the virtualenv in
 virtualenv_dir="${apache_bookshelf_dir}/env"
+
+# the activation script
 virtualenv_activate="${virtualenv_dir}/bin/activate"
 
+# the src wsgi script
 wsgi_script="../apache-wsgi/${wsgi_script_name}"
+
+# the src conf file
 conf_file="../apache-wsgi/${conf_file_name}"
 
+# this gets copied and removed later
 copied_example_cfg_file="${apache_bookshelf_dir}/cfg/example.secret.cfg.json"

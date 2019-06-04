@@ -9,11 +9,6 @@ cfg_file=$dir"/cfg.sh"
 sql_install_file=$dir"/install.sql"
 source $cfg_file
 
-yellow='\033[1;33m'
-blue='\033[1;34m'
-nc='\033[0m'
-red='\033[1;31m' 
-
 if [ ! -f $cfg_json_file ]; then
     echo -e "${red}No secret.cfg.json found. Aborting.${nc}"
     exit 1

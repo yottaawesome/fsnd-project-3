@@ -59,7 +59,7 @@ Modify `cfg.sh` with the appropriate variables for your setup, e.g. where you wa
 
 If you're using Postgres, modify the install.sql file to have the password for your database user. The scripts themselves will autodetect whether you're using Postgres or not, but the database creation to Postgres will only occur if the connection string specifies localhost.
 
-If you're using SQLite, the Apache user will [need to own and have read-write permissions to the directory](https://stackoverflow.com/questions/42260451/proper-write-permissions-for-apache-user-with-sqlite) where the SQLite database is. This is _not_ accounted for by the scripts, so you will need to run the following (modify `<your_sqlite_dir>` and `www-data` as appropriate).
+If you're using SQLite, the Apache user will [need to own and have read-write permissions to the directory](https://stackoverflow.com/questions/42260451/proper-write-permissions-for-apache-user-with-sqlite) where the SQLite database is. The scripts will try to account for this by extracting the absolute path from the `conn_string` attribute in `secret.cfg.json` and changing the owner to `$apache_user` and `$apache_user_group`. Ensure that you verify these values are correct for your server setup.
 
 ```Bash
 chown -R www-data:www-data <your_sqlite_dir>
@@ -250,6 +250,11 @@ A long list of resources that either directly assisted me or gave me ideas on im
 * https://www.cyberciti.biz/faq/how-to-use-sed-to-find-and-replace-text-in-files-in-linux-unix-shell/
 * https://stackoverflow.com/questions/16153446/bash-last-index-of
 * https://stackoverflow.com/questions/5947742/how-to-change-the-output-color-of-echo-in-linux
+* https://unix.stackexchange.com/questions/423329/trivial-rm-rf-command-destroys-my-operating-system-in-a-testing-machine
+* https://stackoverflow.com/questions/3685970/check-if-a-bash-array-contains-a-value
+* https://ryanstutorials.net/linuxtutorial/cheatsheetgrep.php
+* https://stackoverflow.com/questions/10552711/how-to-make-if-not-true-condition
+* https://stackoverflow.com/questions/1378274/in-a-bash-script-how-can-i-exit-the-entire-script-if-a-certain-condition-occurs
 
 ### Miscellaneous
 
