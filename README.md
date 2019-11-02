@@ -4,7 +4,7 @@ This is the final project for Udacity's Full Stack Developer Nanodegree. This pr
 
 ## Status
 
-_Complete. Successfully graded. Lightsail instance decommissioned._
+_Complete. Successfully graded. Lightsail instance decommissioned._ **Warning:** I'm no longer committing to this repo as it was for an assessment which is now complete. Some dependencies are now reporting vulnerabilities, so don't use anything from this repo in production code without validation.
 
 ## Application URL
 
